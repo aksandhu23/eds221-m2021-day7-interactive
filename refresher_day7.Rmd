@@ -1,0 +1,25 @@
+---
+title: "Data Wrangling"
+author: "Amritpal Sandhu"
+date: "2022-08-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(lubridate)
+```
+
+```{r}
+penguins_subset <- penguins |>
+  filter(island %in% c("Biscoe", "Dream")) |>
+  select(-year, -sex) |>
+  mutate(body_mass_kg = body_mass_g /1000) |>
+  rename(location = island)
+```
+
